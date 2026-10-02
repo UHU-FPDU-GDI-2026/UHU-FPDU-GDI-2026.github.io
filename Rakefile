@@ -3,9 +3,9 @@ task :default do # call deploy task by default
 end
 
 desc "Publicar en GitHub los apuntes de OCW y UHU"
-task :deploy do # invoke deployull and deployuhu tasks
-  Rake::Task[:deployull].invoke
-  Rake::Task[:deployuhu].invoke
+task :deploy do
+  sh "git ci -am 'OCW 2026 ' && cp ull.yml _config.yml && git commit -am 'OCW 2026 ' && git push -u origin main"
+  sh "git ci -am 'UHU 2026 ' && cp uhu.yml _config.yml && git commit -am 'UHU 2026 ' && git push -u uhu main"
 end
 
 desc "Publicar en GitHub los apuntes de OCW"
